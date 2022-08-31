@@ -1,17 +1,22 @@
 package com.example.myapplication1.ui.dashboard
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication1.base.BaseFragment
 import com.example.myapplication1.databinding.FragmentDashboardBinding
+import com.example.myapplication1.ui.dashboard.adapter.EpisodeAdapter
 
 class DashboardFragment : BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
+    private lateinit var adapter: EpisodeAdapter
+    private val viewModel by lazy{
+        ViewModelProvider(requireActivity())[DashboardViewMadel::class.java]
+    }
     override fun setupUI() {
-        TODO("Not yet implemented")
+    }
+    override fun setupObserver() {
+        super.setupObserver()
+        viewModel.episode.observe(viewLifecycleOwner) {
+            adapter.setList(it.episode)
+
+        }
     }
 }
