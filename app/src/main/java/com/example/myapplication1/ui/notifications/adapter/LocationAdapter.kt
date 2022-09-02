@@ -34,7 +34,6 @@ class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>
     class LocationViewHolder(private val binding: ItemNotificationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(result: LocationResult) {
-            Glide.with(binding.root)
             binding.txtName.text = result.name
             binding.txtType.text = result.type
             binding.txtDimension.text = result.dimension

@@ -15,7 +15,7 @@ typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
 
     private var _binding: VB? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
 
     private lateinit var control: NavController
     override fun onCreateView(
@@ -32,9 +32,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         setupObserver()
         return binding.root
     }
-
     abstract fun setupUI()
     open fun setupObserver() {
-
     }
 }

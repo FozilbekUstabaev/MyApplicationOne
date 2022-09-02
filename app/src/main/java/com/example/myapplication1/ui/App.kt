@@ -19,24 +19,12 @@ class App : Application() {
         super.onCreate()
         //Character
         val api = Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/character/")
+            .baseUrl("https://rickandmortyapi.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RickAndMortyApi::class.java)
         repo = MainRepository(api)
-        //Location
-        val location1 = Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/location")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(RickAndMortyApi::class.java)
-        location = MainLocation(location1)
-        //Episode
-        val episode1 = Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/episode")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(RickAndMortyApi::class.java)
-        episode = MainEpisode(episode1)
+        location = MainLocation(api)
+        episode = MainEpisode(api)
     }
 }
